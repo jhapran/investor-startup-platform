@@ -2,7 +2,7 @@ import React from 'react';
 import ContactForm from './ContactForm';
 import SupportInfo from './SupportInfo';
 import { motion } from 'framer-motion';
-import { HeadphonesIcon, MessageSquare, ArrowRight } from 'lucide-react';
+import { MessageSquare, ArrowRight } from 'lucide-react';
 
 const Contact: React.FC = () => {
   return (
@@ -21,11 +21,6 @@ const Contact: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <div className="inline-flex items-center justify-center p-3 bg-indigo-50 rounded-2xl mb-6">
-            <HeadphonesIcon className="h-6 w-6 text-indigo-600 mr-2" />
-            <span className="text-indigo-600 font-medium">24/7 Support</span>
-          </div>
-
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
             Need Help?
             <br />

@@ -1,19 +1,20 @@
 import React, { useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import StartupCard from './components/StartupCard';
-import InvestorCard from './components/InvestorCard';
+import KeyFeatures from './components/KeyFeatures';
+import HowItWorks from './components/HowItWorks';
+import Benefits from './components/Benefits';
+import Pricing from './components/Pricing';
+import CallToAction from './components/CallToAction';
+import Resources from './components/Resources';
+import Contact from './components/Contact';
 import StartupDashboard from './components/dashboard/StartupDashboard';
 import InvestorDashboard from './components/dashboard/InvestorDashboard';
-import { useStartups } from './hooks/useStartups';
-import { useInvestors } from './hooks/useInvestors';
 import { useAuth } from './hooks/useAuth';
 import { seedDatabase } from './utils/seedDatabase';
 
 function App() {
   const { user } = useAuth();
-  const { startups, loading: startupsLoading, error: startupsError } = useStartups();
-  const { investors, loading: investorsLoading, error: investorsError } = useInvestors();
 
   useEffect(() => {
     seedDatabase();
@@ -38,54 +39,14 @@ function App() {
     <div className="min-h-screen bg-gray-50">
       <Header />
       <Hero />
-      
-      <main className="container mx-auto px-4 py-16">
-        <section id="startups" className="mb-20">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Featured Startups</h2>
-          {startupsError && (
-            <div className="text-red-600 mb-4">Error: {startupsError}</div>
-          )}
-          {startupsLoading ? (
-            <div className="text-center">Loading startups...</div>
-          ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {startups.map((startup) => (
-                <StartupCard key={startup.id} startup={startup} />
-              ))}
-            </div>
-          )}
-        </section>
-
-        <section id="investors" className="mb-20">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Active Investors</h2>
-          {investorsError && (
-            <div className="text-red-600 mb-4">Error: {investorsError}</div>
-          )}
-          {investorsLoading ? (
-            <div className="text-center">Loading investors...</div>
-          ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {investors.map((investor) => (
-                <InvestorCard key={investor.id} investor={investor} />
-              ))}
-            </div>
-          )}
-        </section>
-
-        <section id="sectors" className="text-center mb-20">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Explore Sectors</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {['Technology', 'Healthcare', 'Education', 'Finance', 'E-commerce', 'Agriculture', 'Clean Energy', 'Manufacturing'].map((sector) => (
-              <div
-                key={sector}
-                className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow cursor-pointer"
-              >
-                <h3 className="text-lg font-semibold text-gray-800">{sector}</h3>
-                <p className="text-gray-600 text-sm mt-2">Explore opportunities</p>
-              </div>
-            ))}
-          </div>
-        </section>
+      <main>
+        <KeyFeatures />
+        <HowItWorks />
+        <Benefits />
+        <Pricing />
+        <CallToAction />
+        <Resources />
+        <Contact />
       </main>
 
       <footer className="bg-gray-900 text-white py-12">

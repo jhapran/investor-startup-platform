@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <ellipse cx="400" cy="500" rx="400" ry="100" fill="#F3F4F6" opacity="0.5"/>
+  
+  <!-- Table -->
+  <rect x="250" y="300" width="300" height="80" rx="5" fill="#E5E7EB"/>
+  <rect x="270" y="290" width="260" height="10" rx="2" fill="#D1D5DB"/>
+  
+  <!-- Laptops -->
+  <rect x="300" y="270" width="80" height="60" rx="3" fill="#9CA3AF"/>
+  <rect x="420" y="270" width="80" height="60" rx="3" fill="#9CA3AF"/>
+  
+  <!-- People -->
+  <!-- Person 1 -->
+  <circle cx="200" cy="250" r="30" fill="#10B981"/>
+  <rect x="185" y="290" width="30" height="80" rx="10" fill="#10B981"/>
+  
+  <!-- Person 2 -->
+  <circle cx="320" cy="250" r="30" fill="#F59E0B"/>
+  <rect x="305" y="290" width="30" height="80" rx="10" fill="#F59E0B"/>
+  
+  <!-- Person 3 -->
+  <circle cx="440" cy="250" r="30" fill="#3B82F6"/>
+  <rect x="425" y="290" width="30" height="80" rx="10" fill="#3B82F6"/>
+  
+  <!-- Person 4 -->
+  <circle cx="560" cy="250" r="30" fill="#EC4899"/>
+  <rect x="545" y="290" width="30" height="80" rx="10" fill="#EC4899"/>
+  
+  <!-- Icons -->
+  <circle cx="250" cy="150" r="25" fill="#10B981" opacity="0.2"/>
+  <path d="M240 150 L260 150 M250 140 L250 160" stroke="#10B981" stroke-width="3"/>
+  
+  <circle cx="500" cy="150" r="25" fill="#3B82F6" opacity="0.2"/>
+  <path d="M490 150 L510 150 M500 140 L500 160" stroke="#3B82F6" stroke-width="3"/>
+</svg>

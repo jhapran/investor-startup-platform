@@ -5,7 +5,7 @@ import { steps } from './steps';
 
 const HowItWorks: React.FC = () => {
   return (
-    <section className="relative py-32 bg-gray-50 overflow-hidden">
+    <section id="howItWorks" className="relative py-32 bg-gray-50 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-0 -right-1/4 w-1/2 h-1/2 bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-full blur-3xl opacity-50 transform rotate-12" />

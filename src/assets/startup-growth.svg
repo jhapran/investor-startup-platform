@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Elements -->
+  <rect x="50" y="50" width="150" height="150" rx="10" fill="#F3F4F6" opacity="0.5"/>
+  <rect x="600" y="50" width="150" height="150" rx="10" fill="#F3F4F6" opacity="0.5"/>
+  
+  <!-- Presentation Board -->
+  <rect x="200" y="100" width="400" height="300" rx="10" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="2"/>
+  <rect x="220" y="120" width="360" height="240" rx="5" fill="#F9FAFB"/>
+  
+  <!-- Graph Bars -->
+  <rect x="250" y="280" width="40" height="60" rx="3" fill="#D1D5DB"/>
+  <rect x="310" y="250" width="40" height="90" rx="3" fill="#9CA3AF"/>
+  <rect x="370" y="220" width="40" height="120" rx="3" fill="#6B7280"/>
+  <rect x="430" y="180" width="40" height="160" rx="3" fill="#4B5563"/>
+  
+  <!-- Rocket -->
+  <path d="M480 160 L520 120 L500 140 L480 160" fill="#FF6B00"/>
+  <path d="M480 160 C460 180, 440 200, 420 220" stroke="#FF6B00" stroke-width="3"/>
+  
+  <!-- People -->
+  <!-- Person in Orange Jacket -->
+  <circle cx="300" cy="450" r="30" fill="#FF6B00"/>
+  <rect x="285" y="480" width="30" height="70" rx="10" fill="#FF6B00"/>
+  
+  <!-- Person in Dark Suit -->
+  <circle cx="200" cy="450" r="30" fill="#1F2937"/>
+  <rect x="185" y="480" width="30" height="70" rx="10" fill="#1F2937"/>
+  
+  <!-- Person in Coral -->
+  <circle cx="400" cy="450" r="30" fill="#FF8C69"/>
+  <rect x="385" y="480" width="30" height="70" rx="10" fill="#FF8C69"/>
+  
+  <!-- Pen Holder -->
+  <rect x="520" y="400" width="30" height="40" rx="5" fill="#D1D5DB"/>
+  <line x1="525" y1="405" x2="525" y2="435" stroke="#9CA3AF" stroke-width="2"/>
+  <line x1="535" y1="405" x2="535" y2="435" stroke="#9CA3AF" stroke-width="2"/>
+  <line x1="545" y1="405" x2="545" y2="435" stroke="#9CA3AF" stroke-width="2"/>
+</svg>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { TrendingUp, UserCircle } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
 import AuthModal from './auth/AuthModal';
+import dfabLogo from '../assets/dfab-logo.svg';
 
 const Header: React.FC = () => {
   const { user, signOut } = useAuth();
@@ -13,54 +13,122 @@ const Header: React.FC = () => {
     setShowAuthModal(true);
   };
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const headerOffset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
-    <header className="bg-indigo-600 text-white">
-      <div className="container mx-auto px-4 py-6">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg shadow-sm">
+      <div className="relative container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <TrendingUp className="h-8 w-8" />
-            <span className="text-2xl font-bold">StartupConnect India</span>
+          {/* Left Section - Logo */}
+          <div className="flex-shrink-0">
+            <a 
+              href="#hero" 
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection('hero');
+              }}
+              className="flex items-center space-x-3"
+            >
+              <img src={dfabLogo} alt="DFAB Logo" className="h-10 w-10" />
+              <span className="text-xl font-bold text-[#FF6B00]">DFAB</span>
+            </a>
           </div>
-          
-          <nav className="hidden md:flex space-x-8">
-            <a href="#startups" className="hover:text-indigo-200 transition-colors">
-              Startups
-            </a>
-            <a href="#investors" className="hover:text-indigo-200 transition-colors">
-              Investors
-            </a>
-            <a href="#sectors" className="hover:text-indigo-200 transition-colors">
-              Sectors
-            </a>
+
+          {/* Center Section - Navigation */}
+          <nav className="hidden lg:flex items-center justify-center flex-1 px-8">
+            <div className="flex space-x-10">
+              <a 
+                href="#hero"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection('hero');
+                }}
+                className="text-gray-800 hover:text-[#FF6B00] text-sm font-medium transition-all duration-200 relative group"
+              >
+                Home
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF6B00] transition-all duration-200 group-hover:w-full"></span>
+              </a>
+              <a 
+                href="#keyFeatures"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection('keyFeatures');
+                }}
+                className="text-gray-800 hover:text-[#FF6B00] text-sm font-medium transition-all duration-200 relative group"
+              >
+                Features
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF6B00] transition-all duration-200 group-hover:w-full"></span>
+              </a>
+              <a 
+                href="#howItWorks"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection('howItWorks');
+                }}
+                className="text-gray-800 hover:text-[#FF6B00] text-sm font-medium transition-all duration-200 relative group"
+              >
+                How It Works
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF6B00] transition-all duration-200 group-hover:w-full"></span>
+              </a>
+              <a 
+                href="#pricing"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection('pricing');
+                }}
+                className="text-gray-800 hover:text-[#FF6B00] text-sm font-medium transition-all duration-200 relative group"
+              >
+                Pricing
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF6B00] transition-all duration-200 group-hover:w-full"></span>
+              </a>
+              <a 
+                href="#resources"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection('resources');
+                }}
+                className="text-gray-800 hover:text-[#FF6B00] text-sm font-medium transition-all duration-200 relative group"
+              >
+                Blog
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF6B00] transition-all duration-200 group-hover:w-full"></span>
+              </a>
+            </div>
           </nav>
 
-          <div className="flex items-center space-x-4">
+          {/* Right Section - CTAs */}
+          <div className="flex items-center space-x-6">
             {user ? (
-              <div className="flex items-center space-x-4">
-                <div className="flex items-center space-x-2">
-                  <UserCircle className="h-6 w-6" />
-                  <span>{user.displayName || 'User'}</span>
-                </div>
-                <button
-                  onClick={() => signOut()}
-                  className="bg-indigo-500 text-white px-4 py-2 rounded-lg hover:bg-indigo-400 transition-colors"
-                >
-                  Sign Out
-                </button>
-              </div>
+              <button
+                onClick={() => signOut()}
+                className="bg-[#FF6B00] text-white px-6 py-2.5 rounded-full hover:bg-[#FF8533] hover:shadow-lg hover:shadow-orange-500/25 transition-all duration-200 text-sm font-medium"
+              >
+                Sign Out
+              </button>
             ) : (
               <>
                 <button
                   onClick={() => handleAuthClick('signin')}
-                  className="bg-white text-indigo-600 px-4 py-2 rounded-lg hover:bg-indigo-50 transition-colors"
+                  className="text-gray-800 hover:text-[#FF6B00] text-sm font-medium transition-colors"
                 >
                   Sign In
                 </button>
                 <button
                   onClick={() => handleAuthClick('signup')}
-                  className="bg-indigo-500 text-white px-4 py-2 rounded-lg hover:bg-indigo-400 transition-colors"
+                  className="bg-[#FF6B00] text-white px-6 py-2.5 rounded-full hover:bg-[#FF8533] hover:shadow-lg hover:shadow-orange-500/25 transition-all duration-200 text-sm font-medium"
                 >
-                  Sign Up
+                  Get Started
                 </button>
               </>
             )}

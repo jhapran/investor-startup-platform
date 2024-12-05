@@ -2,14 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useAuth } from '../../hooks/useAuth';
 import Logo from './Logo';
-import NavLink from './NavLink';
+import NavLinks from './NavLinks';
 import AuthButtons from './AuthButtons';
+import MobileMenu from './MobileMenu';
 import AuthModal from '../auth/AuthModal';
 
 const Header: React.FC = () => {
   const { user, signOut } = useAuth();
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [authMode, setAuthMode] = useState<'signin' | 'signup'>('signin');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { scrollY } = useScroll();
   
   const headerBackground = useTransform(
@@ -21,7 +23,19 @@ const Header: React.FC = () => {
   const handleAuthClick = (mode: 'signin' | 'signup') => {
     setAuthMode(mode);
     setShowAuthModal(true);
+    setIsMobileMenuOpen(false);
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <>
@@ -33,16 +47,11 @@ const Header: React.FC = () => {
           <div className="flex items-center justify-between h-20">
             <Logo />
             
-            <nav className="hidden md:flex items-center space-x-8">
-              <NavLink href="#features">Features</NavLink>
-              <NavLink href="#how-it-works">How It Works</NavLink>
-              <NavLink href="#pricing">Pricing</NavLink>
-              <NavLink href="#resources">Resources</NavLink>
-            </nav>
+            <NavLinks />
 
             <div className="flex items-center space-x-4">
               {user ? (
-                <div className="flex items-center space-x-4">
+                <div className="hidden md:flex items-center space-x-4">
                   <div className="flex items-center space-x-2">
                     <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center">
                       <span className="text-white font-medium">
@@ -61,11 +70,20 @@ const Header: React.FC = () => {
                   </motion.button>
                 </div>
               ) : (
-                <AuthButtons
-                  onSignIn={() => handleAuthClick('signin')}
-                  onSignUp={() => handleAuthClick('signup')}
-                />
+                <div className="hidden md:block">
+                  <AuthButtons
+                    onSignIn={() => handleAuthClick('signin')}
+                    onSignUp={() => handleAuthClick('signup')}
+                  />
+                </div>
               )}
+
+              <MobileMenu
+                isOpen={isMobileMenuOpen}
+                onToggle={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                onSignIn={() => handleAuthClick('signin')}
+                onSignUp={() => handleAuthClick('signup')}
+              />
             </div>
           </div>
         </div>

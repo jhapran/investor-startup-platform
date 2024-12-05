@@ -8,7 +8,7 @@ const Hero: React.FC = () => {
   const [showStartupForm, setShowStartupForm] = useState(false);
 
   return (
-    <section id="hero" className="relative min-h-screen bg-gray-50 overflow-hidden py-20">
+    <section id="hero" className="relative min-h-screen bg-gray-50 overflow-hidden py-20 z-0">
       <div className="max-w-7xl mx-auto px-8 sm:px-12 lg:px-16">
         {/* Background Elements */}
         <div className="absolute inset-0">
@@ -19,7 +19,7 @@ const Hero: React.FC = () => {
         {/* Content */}
         <div className="relative container mx-auto h-full px-4 py-8">
           <div className="max-w-7xl mx-auto h-full">
-            {/* Stats Section - Circular Design with New Colors */}
+            {/* Stats Section - Circular Design */}
             <div className="absolute left-4 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-20">
               <motion.div
                 className="bg-gradient-to-br from-indigo-500 to-indigo-600 text-white w-24 h-24 rounded-full text-center shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center justify-center relative group"

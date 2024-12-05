@@ -28,7 +28,7 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg shadow-sm">
+    <header className="fixed top-0 left-0 right-0 bg-white shadow-sm z-10">
       <div className="relative container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Left Section - Logo */}
@@ -136,11 +136,13 @@ const Header: React.FC = () => {
         </div>
       </div>
 
-      <AuthModal
-        isOpen={showAuthModal}
-        onClose={() => setShowAuthModal(false)}
-        initialMode={authMode}
-      />
+      {showAuthModal && (
+        <AuthModal
+          isOpen={showAuthModal}
+          onClose={() => setShowAuthModal(false)}
+          initialMode={authMode}
+        />
+      )}
     </header>
   );
 };

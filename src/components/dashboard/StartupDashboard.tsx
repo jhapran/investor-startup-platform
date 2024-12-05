@@ -127,21 +127,23 @@ const StartupDashboard: React.FC = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1">
-        <div className="p-6">
-          <div className="mb-6">
-            <div className="flex justify-between items-center">
-              <h1 className="text-2xl font-bold text-gray-900">
-                {sidebarItems.find(item => item.id === activeSection)?.label}
-              </h1>
-              <button className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-500 transition-colors">
-                <MessageSquare className="h-5 w-5" />
-              </button>
+      <div className="flex-1 overflow-auto">
+        <div className="min-h-screen pt-20">
+          <div className="p-8">
+            <div className="mb-8">
+              <div className="flex justify-between items-center">
+                <h1 className="text-2xl font-bold text-gray-900">
+                  {sidebarItems.find(item => item.id === activeSection)?.label}
+                </h1>
+                <button className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-500 transition-colors">
+                  <MessageSquare className="h-5 w-5" />
+                </button>
+              </div>
             </div>
-          </div>
 
-          <div className="mt-6">
-            {renderContent()}
+            <div className="mt-8">
+              {renderContent()}
+            </div>
           </div>
         </div>
       </div>

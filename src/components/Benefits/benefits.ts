@@ -1,47 +1,41 @@
-import { Rocket, Target, Users, TrendingUp, Briefcase, LineChart, Handshake, Shield } from 'lucide-react';
+import {
+  BarChart3,
+  Lightbulb,
+  Users,
+  Shield,
+  Clock,
+  DollarSign,
+} from 'lucide-react';
 
-export const startupBenefits = [
+export const benefits = [
   {
-    icon: Rocket,
-    title: "Faster Fundraising",
-    description: "Accelerate your fundraising process with direct access to verified investors"
+    title: 'Smart Matching',
+    description: 'Connect with the perfect investors based on your industry and goals.',
+    icon: Lightbulb,
   },
   {
-    icon: Target,
-    title: "Perfect Match",
-    description: "Connect with investors who align with your industry and growth stage"
+    title: 'Data Analytics',
+    description: 'Make data-driven decisions with powerful analytics and insights.',
+    icon: BarChart3,
   },
   {
-    icon: Users,
-    title: "Strategic Partners",
-    description: "Build relationships with investors who bring more than just capital"
-  },
-  {
-    icon: TrendingUp,
-    title: "Growth Support",
-    description: "Access mentorship and resources to scale your business"
-  }
-];
-
-export const investorBenefits = [
-  {
-    icon: Briefcase,
-    title: "Deal Flow",
-    description: "Access a curated pipeline of promising startup opportunities"
-  },
-  {
-    icon: LineChart,
-    title: "Portfolio Diversification",
-    description: "Discover startups across various sectors and stages"
-  },
-  {
-    icon: Handshake,
-    title: "Quality Connections",
-    description: "Connect with vetted startups that match your investment criteria"
-  },
-  {
+    title: 'Secure Platform',
+    description: 'Enterprise-grade security for all your sensitive business data.',
     icon: Shield,
-    title: "Due Diligence",
-    description: "Streamlined process with comprehensive startup data and analytics"
-  }
+  },
+  {
+    title: 'Time Efficiency',
+    description: 'Streamlined processes to help you focus on what matters most.',
+    icon: Clock,
+  },
+  {
+    title: 'Network Growth',
+    description: 'Access a diverse network of industry leaders and mentors.',
+    icon: Users,
+  },
+  {
+    title: 'Investment Tracking',
+    description: 'Monitor and manage your investments with real-time updates.',
+    icon: DollarSign,
+  },
 ];

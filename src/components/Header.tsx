@@ -28,93 +28,90 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-white shadow-sm z-10">
+    <header className="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
       <div className="relative container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Left Section - Logo */}
-          <div className="flex-shrink-0">
-            <a 
-              href="#hero" 
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection('hero');
-              }}
-              className="flex items-center space-x-3"
-            >
-              <img src={dfabLogo} alt="DFAB Logo" className="h-10 w-10" />
-              <span className="text-xl font-bold text-[#FF6B00]">DFAB</span>
-            </a>
-          </div>
-
-          {/* Center Section - Navigation */}
-          <nav className="hidden lg:flex items-center justify-center flex-1 px-8">
-            <div className="flex space-x-10">
+          {!user && (
+            <div className="flex-shrink-0">
               <a 
-                href="#hero"
+                href="#hero" 
                 onClick={(e) => {
                   e.preventDefault();
                   scrollToSection('hero');
                 }}
-                className="text-gray-800 hover:text-[#FF6B00] text-sm font-medium transition-all duration-200 relative group"
+                className="flex items-center space-x-3"
               >
-                Home
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF6B00] transition-all duration-200 group-hover:w-full"></span>
-              </a>
-              <a 
-                href="#keyFeatures"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection('keyFeatures');
-                }}
-                className="text-gray-800 hover:text-[#FF6B00] text-sm font-medium transition-all duration-200 relative group"
-              >
-                Features
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF6B00] transition-all duration-200 group-hover:w-full"></span>
-              </a>
-              <a 
-                href="#howItWorks"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection('howItWorks');
-                }}
-                className="text-gray-800 hover:text-[#FF6B00] text-sm font-medium transition-all duration-200 relative group"
-              >
-                How It Works
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF6B00] transition-all duration-200 group-hover:w-full"></span>
-              </a>
-              <a 
-                href="#pricing"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection('pricing');
-                }}
-                className="text-gray-800 hover:text-[#FF6B00] text-sm font-medium transition-all duration-200 relative group"
-              >
-                Pricing
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF6B00] transition-all duration-200 group-hover:w-full"></span>
-              </a>
-              <a 
-                href="#resources"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection('resources');
-                }}
-                className="text-gray-800 hover:text-[#FF6B00] text-sm font-medium transition-all duration-200 relative group"
-              >
-                Blog
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF6B00] transition-all duration-200 group-hover:w-full"></span>
+                <img src={dfabLogo} alt="DFAB Logo" className="h-10 w-10" />
+                <span className="text-xl font-bold text-[#FF6B00]">DFAB</span>
               </a>
             </div>
-          </nav>
+          )}
 
+          {/* Center Section - Navigation */}
+          {!user && (
+            <nav className="hidden lg:flex items-center justify-center flex-1 px-8">
+              <div className="flex space-x-10">
+                <a 
+                  href="#hero"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection('hero');
+                  }}
+                  className="text-gray-800 hover:text-[#FF6B00] text-sm font-medium transition-all duration-200 relative group"
+                >
+                  Home
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF6B00] transition-all duration-200 group-hover:w-full"></span>
+                </a>
+                <a 
+                  href="#keyFeatures"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection('keyFeatures');
+                  }}
+                  className="text-gray-800 hover:text-[#FF6B00] text-sm font-medium transition-all duration-200 relative group"
+                >
+                  Features
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF6B00] transition-all duration-200 group-hover:w-full"></span>
+                </a>
+                <a 
+                  href="#howItWorks"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection('howItWorks');
+                  }}
+                  className="text-gray-800 hover:text-[#FF6B00] text-sm font-medium transition-all duration-200 relative group"
+                >
+                  How It Works
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF6B00] transition-all duration-200 group-hover:w-full"></span>
+                </a>
+                <a 
+                  href="#pricing"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection('pricing');
+                  }}
+                  className="text-gray-800 hover:text-[#FF6B00] text-sm font-medium transition-all duration-200 relative group"
+                >
+                  Pricing
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF6B00] transition-all duration-200 group-hover:w-full"></span>
+                </a>
+              </div>
+            </nav>
+          )}
           {/* Right Section - CTAs */}
-          <div className="flex items-center space-x-6">
+          <div className={`flex items-center ${user ? 'ml-auto' : 'space-x-6'}`}>
             {user ? (
               <button
                 onClick={() => signOut()}
-                className="bg-[#FF6B00] text-white px-6 py-2.5 rounded-full hover:bg-[#FF8533] hover:shadow-lg hover:shadow-orange-500/25 transition-all duration-200 text-sm font-medium"
+                className="flex items-center space-x-2 bg-[#FF6B00] text-white px-6 py-2.5 rounded-lg hover:bg-[#FF8533] hover:shadow-lg hover:shadow-orange-500/25 transition-all duration-200 text-sm font-medium"
               >
-                Sign Out
+                <span>Sign Out</span>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                  <polyline points="16 17 21 12 16 7" />
+                  <line x1="21" y1="12" x2="9" y2="12" />
+                </svg>
               </button>
             ) : (
               <>

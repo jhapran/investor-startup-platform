@@ -101,34 +101,36 @@ const InvestorDashboard: React.FC = () => {
       {/* Sidebar */}
       <div className="relative flex-shrink-0">
         <div 
-          className={`h-screen bg-white border-r border-gray-200 flex flex-col transition-all duration-300 sticky top-0 ${
+          className={`h-screen bg-white border-r border-gray-200 flex flex-col transition-all duration-300 ${
             isSidebarCollapsed ? 'w-16' : 'w-64'
           }`}
         >
-          {/* Toggle Button at Top */}
-          <div className="relative border-b border-gray-200 p-4">
-            <div className="flex items-center justify-between">
-              {!isSidebarCollapsed && (
-                <div>
-                  <div className="text-sm font-medium text-gray-500">Welcome,</div>
-                  <div className="font-semibold text-gray-900 truncate">
-                    {user?.displayName || 'User'}
+          {/* Sidebar Header */}
+          <div className="relative">
+            <div className="sticky top-0 z-50 bg-white border-b border-gray-200 p-4">
+              <div className="flex items-center justify-between">
+                {!isSidebarCollapsed && (
+                  <div className="flex-1 min-w-0">
+                    <div className="text-sm font-medium text-gray-500">Welcome,</div>
+                    <div className="font-semibold text-gray-900 truncate">
+                      {user?.displayName || 'User'}
+                    </div>
                   </div>
-                </div>
-              )}
-              <button
-                onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
-                className={`p-2 rounded-lg hover:bg-gray-100 transition-colors ${
-                  isSidebarCollapsed ? 'mx-auto' : 'ml-auto'
-                }`}
-                title={isSidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
-              >
-                {isSidebarCollapsed ? (
-                  <ChevronRight className="h-5 w-5 text-gray-600" />
-                ) : (
-                  <ChevronLeft className="h-5 w-5 text-gray-600" />
                 )}
-              </button>
+                <button
+                  onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+                  className={`p-2 rounded-lg hover:bg-gray-100 transition-colors ${
+                    isSidebarCollapsed ? 'mx-auto' : 'ml-auto'
+                  }`}
+                  title={isSidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+                >
+                  {isSidebarCollapsed ? (
+                    <ChevronRight className="h-5 w-5 text-gray-600" />
+                  ) : (
+                    <ChevronLeft className="h-5 w-5 text-gray-600" />
+                  )}
+                </button>
+              </div>
             </div>
           </div>
 
@@ -162,9 +164,6 @@ const InvestorDashboard: React.FC = () => {
                 <h1 className="text-2xl font-bold text-gray-900">
                   {sidebarItems.find(item => item.id === activeSection)?.label}
                 </h1>
-                <button className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-500 transition-colors">
-                  Find Startups
-                </button>
               </div>
             </div>
 

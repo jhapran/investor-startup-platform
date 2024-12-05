@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import KeyFeatures from './components/KeyFeatures';
 import HowItWorks from './components/HowItWorks';
 import Benefits from './components/Benefits';
 import Pricing from './components/Pricing';
 import CallToAction from './components/CallToAction';
-import Resources from './components/Resources';
 import Contact from './components/Contact';
 import StartupDashboard from './components/dashboard/StartupDashboard';
 import InvestorDashboard from './components/dashboard/InvestorDashboard';
@@ -40,12 +38,10 @@ function App() {
       <Header />
       <Hero />
       <main>
-        <KeyFeatures />
-        <HowItWorks />
         <Benefits />
+        <HowItWorks />
         <Pricing />
         <CallToAction />
-        <Resources />
         <Contact />
       </main>
 

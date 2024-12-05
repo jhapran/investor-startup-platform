@@ -4,21 +4,21 @@ export const steps = [
   {
     icon: UserPlus,
     title: "Create Profile",
-    description: "Sign up and create a detailed profile tailored to your needs - whether you are a startup seeking funding or an investor looking for opportunities."
+    description: "Build your comprehensive profile showcasing your startup or investment preferences"
   },
   {
     icon: UsersRound,
     title: "Smart Matching",
-    description: "Our AI-powered algorithm matches startups with investors based on sector, investment stage, and funding requirements."
+    description: "Our AI-powered system connects you with the most relevant opportunities"
   },
   {
     icon: Handshake,
     title: "Connect & Collaborate",
-    description: "Schedule meetings, share pitch decks, and engage in meaningful discussions with potential partners."
+    description: "Engage directly with potential partners and explore synergies"
   },
   {
     icon: FileCheck,
     title: "Close Deals",
-    description: "Track deal progress, manage documentation, and successfully close investment rounds through our platform."
+    description: "Finalize partnerships and start your journey towards mutual growth"
   }
 ];

@@ -7,8 +7,38 @@ import heroImage from '../assets/oil-lamp-concept-illustration_114360-7627.svg';
 const Hero: React.FC = () => {
   const [showStartupForm, setShowStartupForm] = useState(false);
 
+  const stats = [
+    {
+      icon: Rocket,
+      count: "500+",
+      label: "Startups",
+      color: "from-indigo-500 to-indigo-600",
+      hoverBg: "bg-indigo-900/70",
+      tooltip: "Active innovative",
+      delay: 0
+    },
+    {
+      icon: Users,
+      count: "200+",
+      label: "Investors",
+      color: "from-purple-500 to-purple-600",
+      hoverBg: "bg-purple-900/70",
+      tooltip: "Active partners",
+      delay: 0.1
+    },
+    {
+      icon: TrendingUp,
+      count: "₹100Cr+",
+      label: "Funded",
+      color: "from-orange-500 to-orange-600",
+      hoverBg: "bg-orange-900/70",
+      tooltip: "Total raised",
+      delay: 0.2
+    }
+  ];
+
   return (
-    <section id="hero" className="relative min-h-screen bg-gray-50 overflow-hidden py-20 z-0">
+    <section id="hero" className="relative min-h-screen bg-gray-50 overflow-hidden py-20">
       <div className="max-w-7xl mx-auto px-8 sm:px-12 lg:px-16">
         {/* Background Elements */}
         <div className="absolute inset-0">
@@ -19,62 +49,87 @@ const Hero: React.FC = () => {
         {/* Content */}
         <div className="relative container mx-auto h-full px-4 py-8">
           <div className="max-w-7xl mx-auto h-full">
-            {/* Stats Section - Circular Design */}
-            <div className="absolute left-4 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-20">
+            {/* Stats Section - Above Hero */}
+            <motion.div 
+              className="flex justify-center gap-8 mb-16"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              {stats.map((stat, index) => (
+                <motion.div
+                  key={index}
+                  className={`bg-gradient-to-br ${stat.color} text-white w-28 h-28 rounded-full text-center shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center justify-center relative group`}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: stat.delay }}
+                  viewport={{ once: true }}
+                >
+                  <div className="bg-white/20 rounded-full p-2 w-10 h-10 mb-1 backdrop-blur-sm flex items-center justify-center">
+                    <stat.icon className="w-5 h-5 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold leading-none mb-0.5">{stat.count}</h3>
+                  <h4 className="text-xs font-medium leading-tight">{stat.label}</h4>
+                  <div className={`absolute inset-0 rounded-full ${stat.hoverBg} opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center`}>
+                    <p className="text-xs text-white/90 px-3">{stat.tooltip}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Main Content Grid */}
+            <div className="grid lg:grid-cols-2 gap-8 h-full items-center">
+              {/* Left Column - Text Content */}
               <motion.div
-                className="bg-gradient-to-br from-indigo-500 to-indigo-600 text-white w-24 h-24 rounded-full text-center shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center justify-center relative group"
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
+                className="text-left space-y-6"
               >
-                <div className="bg-white/20 rounded-full p-1.5 w-8 h-8 mb-0.5 backdrop-blur-sm flex items-center justify-center">
-                  <Rocket className="w-5 h-5 text-white" />
+                {/* Badge */}
+                <div className="inline-flex items-center px-4 py-2 bg-orange-50 text-orange-600 rounded-full text-sm font-medium">
+                  <span className="mr-2">🚀</span>
+                  Transforming Startup Investment
                 </div>
-                <h3 className="text-xl font-bold leading-none">500+</h3>
-                <h4 className="text-xs font-medium leading-tight">Startups</h4>
-                <div className="absolute inset-0 rounded-full bg-indigo-900/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <p className="text-xs text-white/90 px-2">Active innovative</p>
+
+                {/* Headline */}
+                <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                  <span className="block mb-2">Empowering Startups</span>
+                  <span className="block mb-2">
+                    <span className="text-orange-500">Connecting</span> Investors
+                  </span>
+                  <span className="block">
+                    Driving <span className="text-orange-500">Growth</span>
+                  </span>
+                </h1>
+
+                {/* Subheadline */}
+                <p className="text-xl text-gray-600 leading-relaxed">
+                  Discover the perfect match for your vision — where innovation meets funding, and dreams transform into reality.
+                </p>
+
+                {/* CTA Buttons */}
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => setShowStartupForm(true)}
+                    className="px-8 py-4 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white rounded-xl font-medium shadow-lg shadow-orange-500/25 flex items-center justify-center gap-2 group"
+                  >
+                    Get Started
+                    <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                  </motion.button>
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="px-8 py-4 bg-white text-gray-900 rounded-xl font-medium shadow-lg hover:shadow-xl transition-shadow flex items-center justify-center gap-2"
+                  >
+                    Learn More
+                  </motion.button>
                 </div>
               </motion.div>
 
-              <motion.div
-                className="bg-gradient-to-br from-purple-500 to-purple-600 text-white w-24 h-24 rounded-full text-center shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center justify-center relative group"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                viewport={{ once: true }}
-              >
-                <div className="bg-white/20 rounded-full p-1.5 w-8 h-8 mb-0.5 backdrop-blur-sm flex items-center justify-center">
-                  <Users className="w-5 h-5 text-white" />
-                </div>
-                <h3 className="text-xl font-bold leading-none">200+</h3>
-                <h4 className="text-xs font-medium leading-tight">Investors</h4>
-                <div className="absolute inset-0 rounded-full bg-purple-900/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <p className="text-xs text-white/90 px-2">Active partners</p>
-                </div>
-              </motion.div>
-
-              <motion.div
-                className="bg-gradient-to-br from-orange-500 to-orange-600 text-white w-24 h-24 rounded-full text-center shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center justify-center relative group"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                viewport={{ once: true }}
-              >
-                <div className="bg-white/20 rounded-full p-1.5 w-8 h-8 mb-0.5 backdrop-blur-sm flex items-center justify-center">
-                  <TrendingUp className="w-5 h-5 text-white" />
-                </div>
-                <h3 className="text-xl font-bold leading-none">₹100Cr+</h3>
-                <h4 className="text-xs font-medium leading-tight">Funded</h4>
-                <div className="absolute inset-0 rounded-full bg-orange-900/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <p className="text-xs text-white/90 px-2">Total raised</p>
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Main Content Grid */}
-            <div className="grid lg:grid-cols-2 gap-8 h-full items-center">
               {/* Right Column - Hero Image */}
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
@@ -157,60 +212,15 @@ const Hero: React.FC = () => {
                   />
                 </div>
               </motion.div>
-
-              {/* Left Column - Text Content */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-                className="text-left space-y-6"
-              >
-                {/* Badge */}
-                <div className="inline-flex items-center px-4 py-2 bg-orange-50 text-orange-600 rounded-full text-sm font-medium">
-                  <span className="mr-2">🚀</span>
-                  Transforming Startup Investment
-                </div>
-
-                {/* Headline */}
-                <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                  <span className="block mb-2">Empowering Startups</span>
-                  <span className="block mb-2">
-                    <span className="text-orange-500">Connecting</span> Investors
-                  </span>
-                  <span className="block">
-                    Driving <span className="text-orange-500">Growth</span>
-                  </span>
-                </h1>
-
-                {/* Subheadline */}
-                <p className="text-xl text-gray-600 leading-relaxed">
-                  Discover the perfect match for your vision — where innovation meets funding, and dreams transform into reality.
-                </p>
-
-                {/* CTA Buttons */}
-                <div className="flex flex-wrap gap-4 pt-4">
-                  <button
-                    onClick={() => setShowStartupForm(true)}
-                    className="inline-flex items-center px-8 py-4 bg-orange-500 text-white rounded-full text-lg font-semibold hover:bg-orange-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-                  >
-                    List Your Startup
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </button>
-                  <button className="inline-flex items-center px-8 py-4 bg-white text-gray-900 rounded-full text-lg font-semibold border-2 border-gray-200 hover:border-orange-500 transition-all duration-300 transform hover:scale-105">
-                    Invest Now
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </button>
-                </div>
-              </motion.div>
             </div>
           </div>
         </div>
-
-        {showStartupForm && (
-          <StartupForm onClose={() => setShowStartupForm(false)} />
-        )}
       </div>
+
+      {/* Startup Form Modal */}
+      {showStartupForm && (
+        <StartupForm onClose={() => setShowStartupForm(false)} />
+      )}
     </section>
   );
 };

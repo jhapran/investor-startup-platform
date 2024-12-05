@@ -11,43 +11,37 @@ interface StepCardProps {
 
 const StepCard: React.FC<StepCardProps> = ({ index, icon: Icon, title, description }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      viewport={{ once: true }}
-      className="relative group"
-    >
-      <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-3xl transform rotate-2 transition-transform duration-300 group-hover:rotate-1" />
-      <div className="relative bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 transform -rotate-2 group-hover:-rotate-1">
-        <div className="mb-6">
-          <div className="relative">
-            <div className="w-16 h-16 bg-indigo-600/10 rounded-2xl flex items-center justify-center transform rotate-12 group-hover:rotate-6 transition-transform duration-300">
-              <Icon className="h-8 w-8 text-indigo-600 transform -rotate-12 group-hover:-rotate-6 transition-transform duration-300" />
-            </div>
-            <div className="absolute -top-4 -right-4 w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center text-sm font-bold">
-              {index + 1}
-            </div>
+    <div className="group relative bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100">
+      <div className="flex flex-col items-center text-center space-y-4">
+        {/* Icon Container */}
+        <div className="relative">
+          {/* Background Circle with Gradient Border */}
+          <div className="w-16 h-16 rounded-full bg-gradient-to-b from-orange-50 to-white flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+            <Icon className="w-7 h-7 text-orange-600 transform group-hover:scale-110 transition-transform duration-300" />
+          </div>
+          
+          {/* Step Number */}
+          <div className="absolute -top-2 -right-2 w-7 h-7 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full flex items-center justify-center text-white text-sm font-medium shadow-sm">
+            {index + 1}
           </div>
         </div>
-        
-        <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-indigo-600 transition-colors">
-          {title}
-        </h3>
-        
-        <p className="text-gray-600 leading-relaxed">
-          {description}
-        </p>
 
-        <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-          <div className="w-12 h-12 bg-indigo-600/5 rounded-full flex items-center justify-center">
-            <svg className="w-6 h-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </div>
+        {/* Content */}
+        <div className="space-y-2">
+          <h3 className="text-lg font-semibold text-gray-900 group-hover:text-orange-600 transition-colors duration-300">
+            {title}
+          </h3>
+          {description && (
+            <p className="text-sm text-gray-600 leading-relaxed">
+              {description}
+            </p>
+          )}
         </div>
+
+        {/* Hover Effect Overlay */}
+        <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-orange-50/0 to-orange-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
       </div>
-    </motion.div>
+    </div>
   );
 };
 

@@ -55,12 +55,12 @@ const StartupForm: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 overflow-y-auto" onClick={onClose}>
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50" onClick={onClose}>
       <div 
-        className="bg-white rounded-lg w-full max-w-md my-4 flex flex-col"
+        className="bg-white rounded-lg w-full max-w-md max-h-[90vh] flex flex-col"
         onClick={e => e.stopPropagation()}
       >
-        <div className="p-4 border-b flex justify-between items-center sticky top-0 bg-white rounded-t-lg">
+        <div className="p-4 border-b flex justify-between items-center bg-white rounded-t-lg">
           <h2 className="text-xl font-bold text-gray-900">List Your Startup</h2>
           <button
             onClick={onClose}
@@ -70,8 +70,8 @@ const StartupForm: React.FC<{ onClose: () => void }> = ({ onClose }) => {
           </button>
         </div>
 
-        <div className="p-4 overflow-y-auto">
-          <form onSubmit={handleSubmit} className="space-y-3">
+        <div className="p-4 overflow-y-auto flex-1">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <FormField
               label="Startup Name"
               name="name"

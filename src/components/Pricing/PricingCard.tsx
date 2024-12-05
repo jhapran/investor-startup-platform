@@ -1,5 +1,6 @@
 import React from 'react';
-import { Check } from 'lucide-react';
+import { Check, ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 interface PricingFeature {
   text: string;
@@ -12,6 +13,7 @@ interface PricingCardProps {
   description: string;
   features: PricingFeature[];
   isPopular?: boolean;
+  isAnnual?: boolean;
 }
 
 const PricingCard: React.FC<PricingCardProps> = ({
@@ -19,51 +21,94 @@ const PricingCard: React.FC<PricingCardProps> = ({
   price,
   description,
   features,
-  isPopular = false
+  isPopular = false,
+  isAnnual = false
 }) => {
+  const formattedPrice = Number(price.replace(',', '')).toLocaleString('en-IN');
+
   return (
-    <div className={`relative bg-white rounded-2xl shadow-lg ${
-      isPopular ? 'border-2 border-indigo-500 scale-105' : 'border border-gray-200'
-    }`}>
+    <div 
+      className={`group relative bg-white rounded-2xl transition-all duration-300 ${
+        isPopular 
+          ? 'shadow-xl hover:shadow-2xl border-2 border-orange-200 hover:border-orange-300' 
+          : 'shadow-lg hover:shadow-xl border border-gray-100 hover:border-orange-200'
+      }`}
+    >
+      {/* Popular Badge */}
       {isPopular && (
-        <div className="absolute top-0 right-6 transform -translate-y-1/2">
-          <span className="bg-indigo-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+        <div className="absolute -top-5 inset-x-0 flex justify-center">
+          <span className="px-4 py-1.5 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-sm font-medium rounded-full shadow-md">
             Most Popular
           </span>
         </div>
       )}
       
       <div className="p-8">
-        <h3 className="text-xl font-bold text-gray-900">{name}</h3>
-        <p className="mt-4 text-gray-600">{description}</p>
-        <div className="mt-6">
-          <span className="text-4xl font-bold text-gray-900">₹{price}</span>
-          <span className="text-gray-600">/month</span>
+        {/* Header */}
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold text-gray-900">{name}</h3>
+          <p className="text-gray-600 min-h-[48px]">{description}</p>
+          
+          {/* Price */}
+          <div className="pt-4 pb-8">
+            <div className="flex items-end">
+              <span className="text-4xl font-bold text-gray-900">₹{formattedPrice}</span>
+              <span className="text-gray-600 ml-2 mb-1">/{isAnnual ? 'year' : 'month'}</span>
+            </div>
+            {isAnnual && (
+              <p className="mt-2 text-sm text-green-600 font-medium">
+                Includes 20% annual discount
+              </p>
+            )}
+          </div>
         </div>
 
-        <ul className="mt-8 space-y-4">
+        {/* Features */}
+        <ul className="space-y-4 mb-8">
           {features.map((feature, index) => (
-            <li key={index} className="flex items-start">
-              <Check className={`h-5 w-5 ${
-                feature.included ? 'text-green-500' : 'text-gray-300'
-              }`} />
-              <span className={`ml-3 ${
-                feature.included ? 'text-gray-600' : 'text-gray-400 line-through'
+            <motion.li 
+              key={index}
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: index * 0.1 }}
+              className="flex items-start"
+            >
+              <div className={`p-0.5 rounded-full ${
+                feature.included 
+                  ? 'bg-gradient-to-r from-orange-500 to-orange-600'
+                  : 'bg-gray-200'
+              }`}>
+                <Check className={`h-4 w-4 ${
+                  feature.included ? 'text-white' : 'text-gray-400'
+                }`} />
+              </div>
+              <span className={`ml-3 text-sm ${
+                feature.included ? 'text-gray-600' : 'text-gray-400'
               }`}>
                 {feature.text}
               </span>
-            </li>
+            </motion.li>
           ))}
         </ul>
 
-        <button className={`mt-8 w-full py-3 px-4 rounded-lg font-medium ${
-          isPopular
-            ? 'bg-indigo-600 text-white hover:bg-indigo-500'
-            : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
-        } transition-colors`}>
-          Get Started
+        {/* CTA Button */}
+        <button className={`
+          group relative w-full py-3 px-4 rounded-xl font-medium text-sm
+          transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]
+          ${isPopular
+            ? 'bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-md hover:shadow-lg'
+            : 'bg-gray-50 hover:bg-gray-100 text-gray-900 border border-gray-200'
+          }
+        `}>
+          <span className="flex items-center justify-center">
+            Get Started
+            <ArrowRight className="ml-2 h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
+          </span>
         </button>
       </div>
+
+      {/* Hover Effect Overlay */}
+      <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-orange-50/0 to-orange-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
     </div>
   );
 };

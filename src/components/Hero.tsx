@@ -19,38 +19,38 @@ const Hero: React.FC = () => {
         {/* Content */}
         <div className="relative container mx-auto h-full px-4 py-8">
           <div className="max-w-7xl mx-auto h-full">
-            {/* Stats Section - Circular Design */}
+            {/* Stats Section - Circular Design with New Colors */}
             <div className="absolute left-4 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-20">
               <motion.div
-                className="bg-gradient-to-br from-orange-500 to-orange-600 text-white w-24 h-24 rounded-full text-center shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center justify-center relative group"
+                className="bg-gradient-to-br from-indigo-500 to-indigo-600 text-white w-24 h-24 rounded-full text-center shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center justify-center relative group"
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
               >
-                <div className="bg-white/10 rounded-full p-1.5 w-8 h-8 mb-0.5 backdrop-blur-sm flex items-center justify-center">
+                <div className="bg-white/20 rounded-full p-1.5 w-8 h-8 mb-0.5 backdrop-blur-sm flex items-center justify-center">
                   <Rocket className="w-5 h-5 text-white" />
                 </div>
                 <h3 className="text-xl font-bold leading-none">500+</h3>
                 <h4 className="text-xs font-medium leading-tight">Startups</h4>
-                <div className="absolute inset-0 rounded-full bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <div className="absolute inset-0 rounded-full bg-indigo-900/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <p className="text-xs text-white/90 px-2">Active innovative</p>
                 </div>
               </motion.div>
 
               <motion.div
-                className="bg-gradient-to-br from-orange-500 to-orange-600 text-white w-24 h-24 rounded-full text-center shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center justify-center relative group"
+                className="bg-gradient-to-br from-purple-500 to-purple-600 text-white w-24 h-24 rounded-full text-center shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center justify-center relative group"
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
                 viewport={{ once: true }}
               >
-                <div className="bg-white/10 rounded-full p-1.5 w-8 h-8 mb-0.5 backdrop-blur-sm flex items-center justify-center">
+                <div className="bg-white/20 rounded-full p-1.5 w-8 h-8 mb-0.5 backdrop-blur-sm flex items-center justify-center">
                   <Users className="w-5 h-5 text-white" />
                 </div>
                 <h3 className="text-xl font-bold leading-none">200+</h3>
                 <h4 className="text-xs font-medium leading-tight">Investors</h4>
-                <div className="absolute inset-0 rounded-full bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <div className="absolute inset-0 rounded-full bg-purple-900/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <p className="text-xs text-white/90 px-2">Active partners</p>
                 </div>
               </motion.div>
@@ -62,12 +62,12 @@ const Hero: React.FC = () => {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                <div className="bg-white/10 rounded-full p-1.5 w-8 h-8 mb-0.5 backdrop-blur-sm flex items-center justify-center">
+                <div className="bg-white/20 rounded-full p-1.5 w-8 h-8 mb-0.5 backdrop-blur-sm flex items-center justify-center">
                   <TrendingUp className="w-5 h-5 text-white" />
                 </div>
                 <h3 className="text-xl font-bold leading-none">₹100Cr+</h3>
                 <h4 className="text-xs font-medium leading-tight">Funded</h4>
-                <div className="absolute inset-0 rounded-full bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <div className="absolute inset-0 rounded-full bg-orange-900/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <p className="text-xs text-white/90 px-2">Total raised</p>
                 </div>
               </motion.div>
